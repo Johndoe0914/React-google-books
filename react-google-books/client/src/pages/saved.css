@@ -1,0 +1,20 @@
+.wrappingDiv {
+    display: flex;
+    padding-left: 200px;
+    background-color: grey;
+}
+.deleteBtn {
+   position: relative;
+   float: right;
+   background-color:white;
+   margin-left: 5px;
+}
+.viewBtn {
+    position: relative;
+    float: right;
+    background-color:green;
+    border-radius: 7px;
+    border-style: groove;
+    color: black;
+    padding:5px;
+}
