@@ -42,10 +42,12 @@ class Search extends Component {
           <div className="wrappingDiv">
         <Container fluid>
         <Row>
-            <Col size="md-10">
+            <Col size="md-10" >
+              <div style={{ boxShadow: "0 3px 6px black, 0 3px 6px black"}}>
            <Jumbotron>
                <h1>(React) Google Books search</h1>
            </Jumbotron>
+           </div>
            </Col>
         </Row>
         <Row>

@@ -1,5 +1,7 @@
 .wrappingDiv {
   display: flex;
+  padding-top: 70px;
   padding-left: 200px;
-  background-color: darkgray;
+  
+
 }
