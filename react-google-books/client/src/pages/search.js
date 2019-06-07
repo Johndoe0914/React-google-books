@@ -16,9 +16,14 @@ class Search extends Component {
         books: []
     };
     searchBook = () => {
-        axios.get("https://www.googleapis.com/books/v1/volumes?q="+ (this.state.search) +"inauthor:keyes&key=AIzaSyCigDcSCvY6B3sLyNmb3ZfB5rGwcUb8lZE" )
-                .then(response => {
-                    console.log(response);
+        axios.get("https://www.googleapis.com/books/v1/volumes?q="+ (this.state.search) +"&orderBy-newest&inauthor:keyes&key=AIzaSyCZix41EfVJ79080h6bvWKHOs6Ua74vv4s" )
+                .then(res => {
+                    console.log(res.data);
+              
+
+                                
+                 this.setState({ books: res.data})
+                    console.log("Logged books" +this.state.books)
                 })
                 .catch(error =>{
                     console.log(error);
@@ -76,13 +81,13 @@ class Search extends Component {
                     {this.state.books.length ? (
                         <List>
                             {this.state.books.map(book => (
-                                <ListItem key={book._id}>
+                                <ListItem key={book.data.items.id}>
                                 <Link to={"/books/" + book._id}>
                                 <strong>
-                                    {book.title} by {book.author}
+                                    {book.items.volumeInfo.title} by {book.items.volumeInfo.authors}
                                     
                                 </strong>
-                                {book.description}
+                                {book.items.volumeInfo.description}
                                 </Link>
                                 
                                 </ListItem>
