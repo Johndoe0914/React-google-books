@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import React, { Component } from 'react';
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron/index";
+import Card from "../components/Card/index";
+import Book from "../components/Book/index";
 import { List, ListItem } from "../components/List";
 import {ViewBtn, DeleteBtn} from "../components/DeleteBtn";
 import API from "../utils/API";
@@ -16,7 +18,7 @@ class Saved extends Component {
       }
     
       loadBooks = () => {
-        API.getBooks()
+        API.getSavedBooks()
           .then(res => this.setState({ books: res.data }))
           .catch(err => console.log(err));
       };
@@ -35,7 +37,7 @@ class Saved extends Component {
         <Container fluid>
         <Row>
             <Col size="md-10">
-           <Jumbotron>
+           <Jumbotron >
                <h1>(React) Google Books search</h1>
            </Jumbotron>
            </Col>
@@ -45,32 +47,35 @@ class Saved extends Component {
                   <Jumbotron>
                       <h3>Saved books</h3>
                   </Jumbotron>
-                    {this.state.books.length ? (
-                        <List>
-                            {this.state.books.map(book => (
-                                <ListItem key={book._id}>
-                                <DeleteBtn className="deleteBtn"onClick ={() => this.deleteBook(book._id)} />
-                                <Link to="https://youtube.com">
-                                    <ViewBtn className="viewBtn"/>
-                                </Link>
-                                <br></br>
-                                <strong>
-                                {book.title} 
-                                 </strong>
-                                 <br></br>
-                                by: {book.author}
-                                <br></br>
-                                {book.description}
-                                <br></br>
-                                {book.image}
-                               
-                                
-                                </ListItem>
-                            ))}
-                        </List>
-                    ) : (
-                        <h3>No Books saved</h3>
-                    )}
+                  <div className="savedBooks">
+                  <Card >
+              {this.state.books.length ? (
+                <List>
+                  {this.state.books.map(book => (
+                    <Book
+                      key={book._id}
+                      title={book.title}
+                      subtitle={book.subtitle}
+                      link={book.link}
+                      authors={book.authors.join(", ")}
+                      description={book.description}
+                      image={book.image}
+                      Button={() => (
+                        <button
+                          onClick={() => this.deleteBook(book._id)}
+                          className="btn btn-danger ml-2"
+                        >
+                          X
+                        </button>
+                      )}
+                    />
+                  ))}
+                </List>
+              ) : (
+                <h2 className="text-center">No Saved Books</h2>
+              )}
+            </Card>
+            </div>
 
                   </Col>
               </Row>

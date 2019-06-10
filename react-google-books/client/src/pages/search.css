@@ -2,6 +2,11 @@
   display: flex;
   padding-top: 70px;
   padding-left: 200px;
-  
+  padding-bottom: 50px;
+ 
 
+}
+
+.showBooks {
+  box-shadow: 0 3px 6px darkslategrey, 0 3px 6px darkslategrey;
 }

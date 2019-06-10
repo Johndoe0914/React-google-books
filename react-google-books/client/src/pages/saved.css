@@ -18,3 +18,9 @@
     color: black;
     padding:5px;
 }
+.savedBooks {
+    box-shadow: 0 3px 6px darkslategrey, 0 3px 6px darkslategrey;
+}
+.jumbo {
+    box-shadow: 0 3px 6px darkslategrey, 0 3px 6px darkslategrey;
+}
